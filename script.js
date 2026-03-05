@@ -151,3 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('filter-btn') || e.target.classList.contains('cat-btn')) {
+        alert('Le bouton a été cliqué !');
+        e.target.style.backgroundColor = "red"; // Change la couleur en rouge pour tester
+    }
+});
