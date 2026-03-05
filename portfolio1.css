@@ -819,3 +819,71 @@ header, section, main, footer {
     box-shadow: 0 0 20px var(--neon-purple);
 }
 
+/* --- LE BLOC DES FILTRES --- */
+.filter-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative; 
+    z-index: 10; /* Empêche les autres éléments de bloquer les clics */
+}
+
+.filter-group h4 {
+    color: var(--dim);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.segment-filters, .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* --- LES BOUTONS (Par défaut) --- */
+.filter-btn, .cat-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer; /* Fait apparaître la petite main */
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 11; /* Rend les boutons prioritaires au clic */
+}
+
+/* --- ÉTATS ACTIFS (Quand tu cliques dessus) --- */
+
+/* Boutons de Segmentation (All, École, Pro...) */
+.filter-btn.active {
+    background: var(--neon-blue);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+    color: white;
+}
+
+/* Boutons de Catégories (Patrimoine, Incidents...) */
+.cat-btn.selected {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    border: none;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.5);
+    color: white;
+}
+
+/* Bouton E6 Spécifique */
+.filter-btn.btn-e6.active {
+    background: var(--neon-purple);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px var(--neon-purple);
+}
