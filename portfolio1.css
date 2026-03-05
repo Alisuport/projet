@@ -804,6 +804,49 @@ header, section, main, footer {
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
     color: white;
 }
+/* --- PROTECTION DES CLIQUES --- */
+.filter-wrapper {
+    position: relative;
+    z-index: 100; /* Passe au-dessus de tout */
+    pointer-events: auto !important; /* Autorise les interactions */
+}
+
+.filter-btn, .cat-btn {
+    position: relative;
+    z-index: 101;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+/* --- ÉTATS VISUELS --- */
+
+/* Segmentation active (Bleu) */
+.filter-btn.active {
+    background: #00d2ff !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+}
+
+/* Catégories sélectionnées (Dégradé) */
+.cat-btn.selected {
+    background: linear-gradient(45deg, #00d2ff, #9d50bb) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.6);
+}
+
+/* Effet au survol pour confirmer que c'est cliquable */
+.filter-btn:hover, .cat-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
+/* Gestion de l'affichage des projets */
+.project-item {
+    transition: opacity 0.4s ease;
+}
 
 /* État SÉLECTIONNÉ (Catégories - Dégradé Violet/Bleu) */
 .cat-btn.selected {
@@ -905,3 +948,4 @@ header, section, main, footer {
     font-size: 0.8rem;
     opacity: 0.6;
 }
+
