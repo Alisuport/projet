@@ -15,7 +15,6 @@
         <ul class="nav-links">
             <li><a href="#presentation">Accueil</a></li>
             <li><a href="#missions">Réalisations professionnels</a></li>
-            <li><a href="#docs-section">Documentations</a></li>
             <li><a href="#table-section">tableau de synthése</a></li>
             <li><a href="#labo">Dévellopement profesionnel</a></li>
         </ul>
@@ -128,8 +127,8 @@
             </div>
         </section>
 
-        <section id="projects-section">
-    <h2 class="title-main">Portfolio de Compétences</h2>
+<section id="missions">
+    <h2 class="title-main">Réalisations Professionnelles</h2>
 
     <div class="filter-wrapper">
         <div class="filter-group">
@@ -139,53 +138,80 @@
                 <button class="filter-btn" data-segment="ecole">École</button>
                 <button class="filter-btn" data-segment="pro">Pro</button>
                 <button class="filter-btn" data-segment="perso">Perso</button>
-                <button class="filter-btn btn-e6" data-segment="e6">E6 (Sélection)</button>
+                <button class="filter-btn btn-e6" data-segment="e6">E6 (Épreuve)</button>
             </div>
         </div>
 
         <div class="filter-group">
-            <h4>Compétences BTS SIO</h4>
+            <h4>Compétences</h4>
             <div class="category-filters">
                 <button class="cat-btn" data-cat="patrimoine">GÉRER LE PATRIMOINE</button>
                 <button class="cat-btn" data-cat="incidents">RÉPONDRE AUX INCIDENTS</button>
-                <button class="cat-btn" data-cat="prescence">DÉVELOPPER LA PRÉSENCE EN LIGNE</button>
+                <button class="cat-btn" data-cat="presence">DÉVELOPPER LA PRÉSENCE EN LIGNE</button>
                 <button class="cat-btn" data-cat="projet">TRAVAILLER EN MODE PROJET</button>
-                <button class="cat-btn" data-cat="service">MISE A DISPOSITION D’UN SERVICE INFORMATIQUE</button>
+                <button class="cat-btn" data-cat="service">MISE A DISPOSITION D'UN SERVICE</button>
             </div>
         </div>
     </div>
 
-    <div class="mission-grid-flex" id="projects-grid">
-        
-        <article class="m-card-new project-item" 
-                 data-segment="pro e6" 
-                 data-categories="patrimoine incidents service">
-            <div class="card-header">
-                <span class="m-badge">PRO / E6</span>
-                <h3>Infrastructure Infinitech</h3>
-            </div>
-            <p>Mise en place d'un domaine complet avec gestion des accès et sécurité renforcée.</p>
-            
-            <div class="project-docs">
-                <a href="doc-infinitech.pdf" target="_blank" class="btn-doc-link">📄 Documentation Technique</a>
-            </div>
-        </article>
+<div class="mission-grid-flex" id="projects-grid">
+    
+    <article class="m-card-new project-item" data-segment="pro e6" data-categories="patrimoine incidents service">
+        <div class="card-header">
+            <span class="m-badge">PRO / E6</span>
+            <h3>Infrastructure Réseau Infinitech</h3>
+        </div>
+        <p>Conception d'un réseau segmenté (VLANs), déploiement d'un contrôleur de domaine AD DS et sécurisation des accès distants via VPN.</p>
+        <div class="project-docs">
+            <a href="./doc-infinitech.pdf" target="_blank" class="btn-doc-link">📄 Documentation Technique</a>
+        </div>
+    </article>
 
-        <article class="m-card-new project-item" 
-                 data-segment="ecole" 
-                 data-categories="projet service">
-            <div class="card-header">
-                <span class="m-badge" style="background: var(--neon-purple);">ÉCOLE</span>
-                <h3>Atelier Professionnel GSB</h3>
-            </div>
-            <p>Déploiement de solutions de supervision réseau et gestion de tickets.</p>
-            <div class="project-docs">
-                <a href="doc-gsb.pdf" target="_blank" class="btn-doc-link">📄 Rapport d'activité</a>
-            </div>
-        </article>
+    <article class="m-card-new project-item" data-segment="pro e6" data-categories="incidents patrimoine">
+        <div class="card-header">
+            <span class="m-badge">PRO / E6</span>
+            <h3>Audit et Sécurisation Parc IT</h3>
+        </div>
+        <p>Analyse des vulnérabilités, mise en place d'une politique de sauvegarde 3-2-1 et durcissement (hardening) des serveurs Windows/Linux.</p>
+        <div class="project-docs">
+            <a href="./doc-audit.pdf" target="_blank" class="btn-doc-link">📄 Rapport d'Audit</a>
+        </div>
+    </article>
 
-    </div>
-</section>
+    <article class="m-card-new project-item" data-segment="ecole" data-categories="service projet presence">
+        <div class="card-header">
+            <span class="m-badge" style="background: var(--neon-purple);">ÉCOLE</span>
+            <h3>Atelier GSB : Services Réseaux</h3>
+        </div>
+        <p>Installation et configuration de services de base : DNS, DHCP, Serveur Web Apache et mise en place d'un Intranet documentaire.</p>
+        <div class="project-docs">
+            <a href="./doc-gsb-services.pdf" target="_blank" class="btn-doc-link">📄 Fiche de situation</a>
+        </div>
+    </article>
+
+    <article class="m-card-new project-item" data-segment="ecole" data-categories="incidents patrimoine service">
+        <div class="card-header">
+            <span class="m-badge" style="background: var(--neon-purple);">ÉCOLE</span>
+            <h3>Supervision avec Zabbix/GLPI</h3>
+        </div>
+        <p>Mise en œuvre d'une solution de supervision (Zabbix) couplée à un gestionnaire de parc et de tickets (GLPI) pour la gestion des incidents.</p>
+        <div class="project-docs">
+            <a href="./doc-supervision.pdf" target="_blank" class="btn-doc-link">📄 Documentation GLPI</a>
+        </div>
+    </article>
+
+    <article class="m-card-new project-item" data-segment="perso" data-categories="patrimoine projet">
+        <div class="card-header">
+            <span class="m-badge" style="background: var(--dim);">PERSO</span>
+            <h3>Home Lab Virtualisé</h3>
+        </div>
+        <p>Création d'un environnement de test sous VMware ESXi/Proxmox simulant une infrastructure d'entreprise complète pour tests de cybersécurité.</p>
+        <div class="project-docs">
+            <a href="./doc-homelab.pdf" target="_blank" class="btn-doc-link">📄 Schéma Réseau</a>
+        </div>
+    </article>
+
+</div>
         <section id="table-section">
             <h2 class="title-main">Tableau de Synthèse</h2>
             <div class="viewer-container">
@@ -280,6 +306,7 @@
     </script>
 </body>
 </html>
+
 
 
 
