@@ -132,28 +132,26 @@
     <h2 class="title-main">Réalisations Professionnelles</h2>
 
     <div class="filter-wrapper">
-        <div class="filter-group">
-            <h4>Segmentation</h4>
-            <div class="segment-filters">
-                <button class="filter-btn active" data-segment="all">All</button>
-                <button class="filter-btn" data-segment="ecole">École</button>
-                <button class="filter-btn" data-segment="pro">Pro</button>
-                <button class="filter-btn" data-segment="perso">Perso</button>
-                <button class="filter-btn btn-e6" data-segment="e6">E6</button>
+        <header class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Mes   <span class="text-gradient">Réalisations professionnelles</span></h2>
+            
+            <div class="mt-12 flex justify-center gap-6 flex-wrap">
+                <button class="filter-btn ctx-btn active text-xs font-bold uppercase tracking-widest" onclick="filterMissions('ctx', 'all', this)">Tous</button>
+                <button class="filter-btn ctx-btn text-xs font-bold uppercase tracking-widest" onclick="filterMissions('ctx', 'pro', this)">Professionnel</button>
+                <button class="filter-btn ctx-btn text-xs font-bold uppercase tracking-widest" onclick="filterMissions('ctx', 'ecole', this)">École</button>
+                <button class="filter-btn ctx-btn text-xs font-bold uppercase tracking-widest" onclick="filterMissions('ctx', 'perso', this)">Personnel</button>
+                <button class="filter-btn ctx-btn text-xs font-bold uppercase tracking-widest" onclick="filterMissions('ctx', 'E6', this)">E6</button>
             </div>
-        </div>
 
-        <div class="filter-group">
-            <h4>Catégories</h4>
-            <div class="category-filters">
-                <button class="cat-btn" data-cat="patrimoine">GÉRER LE PATRIMOINE</button>
-                <button class="cat-btn" data-cat="incidents">RÉPONDRE AUX INCIDENTS</button>
-                <button class="cat-btn" data-cat="presence">DEVELOPPER LA PRESENCE EN LIGNE</button>
-                <button class="cat-btn" data-cat="projet">TRAVAILLER EN MODE PROJET</button>
-                <button class="cat-btn" data-cat="service">MISE A DISPOSITION D'UN SERVICE INFORMATIQUE</button>
+            <div class="mt-8 flex justify-center gap-4 md:gap-6 flex-wrap pb-10 border-b border-white/5">
+                <button class="filter-btn comp-btn active text-[10px] font-bold uppercase tracking-widest" onclick="filterMissions('comp', 'all', this)">Tout</button>
+                <button class="filter-btn comp-btn text-[10px] font-bold uppercase tracking-widest" onclick="filterMissions('comp', 'patrimoine', this)">Gérer le patrimoine</button>
+                <button class="filter-btn comp-btn text-[10px] font-bold uppercase tracking-widest" onclick="filterMissions('comp', 'incident', this)">Répondre aux Incidents</button>
+                <button class="filter-btn comp-btn text-[10px] font-bold uppercase tracking-widest" onclick="filterMissions('comp', 'presence', this)">Développer la présence en ligne</button>
+                <button class="filter-btn comp-btn text-[10px] font-bold uppercase tracking-widest" onclick="filterMissions('comp', 'projet', this)">Travailler en mode projet</button>
+                <button class="filter-btn comp-btn text-[10px] font-bold uppercase tracking-widest" onclick="filterMissions('comp', 'service', this)">Mise à disposition d'un service informatique</button>
             </div>
-        </div>
-    </div>
+        </header>
 
     <div class="mission-grid-flex">
         
@@ -292,6 +290,7 @@
     </script>
 </body>
 </html>
+
 
 
 
