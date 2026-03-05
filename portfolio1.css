@@ -887,3 +887,21 @@ header, section, main, footer {
     border-color: var(--neon-purple);
     box-shadow: 0 0 20px var(--neon-purple);
 }
+
+.veille-link {
+    color: inherit; /* Garde la couleur blanche/texte de ton h4 */
+    text-decoration: none; /* Enlève le souligné par défaut */
+    transition: 0.3s ease;
+}
+
+.veille-link:hover {
+    color: var(--neon-blue); /* Change de couleur au survol (si tu as cette variable) */
+    text-shadow: 0 0 8px var(--neon-blue); /* Petit effet néon au survol */
+}
+
+/* Optionnel : ajouter une petite flèche après le lien */
+.veille-link::after {
+    content: " ↗";
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
