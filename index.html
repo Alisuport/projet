@@ -138,80 +138,62 @@
                 <button class="filter-btn" data-segment="ecole">École</button>
                 <button class="filter-btn" data-segment="pro">Pro</button>
                 <button class="filter-btn" data-segment="perso">Perso</button>
-                <button class="filter-btn btn-e6" data-segment="e6">E6 (Épreuve)</button>
+                <button class="filter-btn btn-e6" data-segment="e6">E6</button>
             </div>
         </div>
 
         <div class="filter-group">
-            <h4>Compétences</h4>
+            <h4>Catégories</h4>
             <div class="category-filters">
                 <button class="cat-btn" data-cat="patrimoine">GÉRER LE PATRIMOINE</button>
                 <button class="cat-btn" data-cat="incidents">RÉPONDRE AUX INCIDENTS</button>
-                <button class="cat-btn" data-cat="presence">DÉVELOPPER LA PRÉSENCE EN LIGNE</button>
-                <button class="cat-btn" data-cat="projet">TRAVAILLER EN MODE PROJET</button>
-                <button class="cat-btn" data-cat="service">MISE A DISPOSITION D'UN SERVICE</button>
+                <button class="cat-btn" data-cat="presence">PRÉSENCE EN LIGNE</button>
+                <button class="cat-btn" data-cat="projet">MODE PROJET</button>
+                <button class="cat-btn" data-cat="service">SERVICE INFORMATIQUE</button>
             </div>
         </div>
     </div>
 
-<div class="mission-grid-flex" id="projects-grid">
-    
-    <article class="m-card-new project-item" data-segment="pro e6" data-categories="patrimoine incidents service">
-        <div class="card-header">
-            <span class="m-badge">PRO / E6</span>
-            <h3>Infrastructure Réseau Infinitech</h3>
-        </div>
-        <p>Conception d'un réseau segmenté (VLANs), déploiement d'un contrôleur de domaine AD DS et sécurisation des accès distants via VPN.</p>
-        <div class="project-docs">
-            <a href="./doc-infinitech.pdf" target="_blank" class="btn-doc-link">📄 Documentation Technique</a>
-        </div>
-    </article>
+    <div class="mission-grid-flex">
+        
+        <article class="m-card-new project-item" data-segment="pro e6" data-categories="patrimoine service incidents">
+            <div class="card-header">
+                <span class="m-badge">E6 / PRO</span>
+                <h3>Infrastructure Complète</h3>
+            </div>
+            <p>Conception et déploiement d'une infrastructure réseau isolée : Firewall pfSense, contrôleur de domaine AD/DNS et serveur DHCP centralisé.</p>
+            <div class="project-docs">
+                <a href="./documentation-AD.docx" target="_blank" class="btn-doc-link">📄 Documentation installation AD/DNS</a>
+                 <a href="./documentation-DHCP.docx" target="_blank" class="btn-doc-link">📄 Documentation installation DHCP</a>
+            </div>
+        </article>
 
-    <article class="m-card-new project-item" data-segment="pro e6" data-categories="incidents patrimoine">
-        <div class="card-header">
-            <span class="m-badge">PRO / E6</span>
-            <h3>Audit et Sécurisation Parc IT</h3>
-        </div>
-        <p>Analyse des vulnérabilités, mise en place d'une politique de sauvegarde 3-2-1 et durcissement (hardening) des serveurs Windows/Linux.</p>
-        <div class="project-docs">
-            <a href="./doc-audit.pdf" target="_blank" class="btn-doc-link">📄 Rapport d'Audit</a>
-        </div>
-    </article>
+        <article class="m-card-new project-item" data-segment="pro" data-categories="incidents">
+            <div class="card-header">
+                <span class="m-badge">PRO</span>
+                <h3>Support Utilisateur</h3>
+            </div>
+            <p>Gestion des tickets d'assistance et dépannage matériel de proximité lors de mon stage.</p>
+        </article>
 
-    <article class="m-card-new project-item" data-segment="ecole" data-categories="service projet presence">
-        <div class="card-header">
-            <span class="m-badge" style="background: var(--neon-purple);">ÉCOLE</span>
-            <h3>Atelier GSB : Services Réseaux</h3>
-        </div>
-        <p>Installation et configuration de services de base : DNS, DHCP, Serveur Web Apache et mise en place d'un Intranet documentaire.</p>
-        <div class="project-docs">
-            <a href="./doc-gsb-services.pdf" target="_blank" class="btn-doc-link">📄 Fiche de situation</a>
-        </div>
-    </article>
+        <article class="m-card-new project-item" data-segment="ecole" data-categories="service patrimoine">
+            <div class="card-header">
+                <span class="m-badge">ÉCOLE</span>
+                <h3>Inventaire GLPI</h3>
+            </div>
+            <p>Mise en place d'un outil de gestion de parc informatique pour le suivi des actifs.</p>
+        </article>
 
-    <article class="m-card-new project-item" data-segment="ecole" data-categories="incidents patrimoine service">
-        <div class="card-header">
-            <span class="m-badge" style="background: var(--neon-purple);">ÉCOLE</span>
-            <h3>Supervision avec Zabbix/GLPI</h3>
-        </div>
-        <p>Mise en œuvre d'une solution de supervision (Zabbix) couplée à un gestionnaire de parc et de tickets (GLPI) pour la gestion des incidents.</p>
-        <div class="project-docs">
-            <a href="./doc-supervision.pdf" target="_blank" class="btn-doc-link">📄 Documentation GLPI</a>
-        </div>
-    </article>
+        <article class="m-card-new project-item" data-segment="perso" data-categories="projet">
+            <div class="card-header">
+                <span class="m-badge">PERSO</span>
+                <h3>Veille Technologique</h3>
+            </div>
+            <p>Organisation d'un flux de veille sur les vulnérabilités réseaux via des outils RSS.</p>
+        </article>
 
-    <article class="m-card-new project-item" data-segment="perso" data-categories="patrimoine projet">
-        <div class="card-header">
-            <span class="m-badge" style="background: var(--dim);">PERSO</span>
-            <h3>Home Lab Virtualisé</h3>
-        </div>
-        <p>Création d'un environnement de test sous VMware ESXi/Proxmox simulant une infrastructure d'entreprise complète pour tests de cybersécurité.</p>
-        <div class="project-docs">
-            <a href="./doc-homelab.pdf" target="_blank" class="btn-doc-link">📄 Schéma Réseau</a>
-        </div>
-    </article>
-
-</div>
+    </div>
+</section>
         <section id="table-section">
             <h2 class="title-main">Tableau de Synthèse</h2>
             <div class="viewer-container">
@@ -306,6 +288,7 @@
     </script>
 </body>
 </html>
+
 
 
 
