@@ -128,81 +128,61 @@
             </div>
         </section>
 
-        <section id="missions">
-            <h2 class="title-main">Réalisations professionelles</h2>
-            <div class="filter-container">
-                <div class="filter-group">
-                    <button class="filter-btn active" onclick="filterSelection('all')">Tout</button>
-                    <button class="filter-btn" onclick="filterSelection('patrimoine')">Gérer le patrimoine</button>
-                    <button class="filter-btn" onclick="filterSelection('incident')">Incidents</button>
-                    <button class="filter-btn" onclick="filterSelection('ligne')">Présence en ligne</button>
-                    <button class="filter-btn" onclick="filterSelection('projet')">Mode projet</button>
-                    <button class="filter-btn" onclick="filterSelection('service')">Service informatique</button>
-                </div>
-            </div>
+        <section id="projects-section">
+    <h2 class="title-main">Portfolio de Compétences</h2>
 
-            <div class="mission-grid-flex">
-                <div class="m-card-new ecole patrimoine projet">
-                    <span class="m-badge">ECOLE</span>
-                    <h3>Projet Infinitech</h3>
-                    <p>Déploiement complet d'une infrastructure Active Directory et services réseaux.</p>
-                </div>
-                <div class="m-card-new pro incident patrimoine">
-                    <span class="m-badge">PRO</span>
-                    <h3>Support IT - Damart</h3>
-                    <p>Gestion du parc et résolution d'incidents utilisateurs (Niveau 1 & 2).</p>
-                </div>
-                <div class="m-card-new perso ligne">
-                    <span class="m-badge">PERSO</span>
-                    <h3>Portfolio Professionnel</h3>
-                    <p>Conception du site vitrine sous HTML/CSS.</p>
-                </div>
-                <div class="m-card-new ecole service">
-                    <span class="m-badge">ECOLE</span>
-                    <h3>Déploiement GLPI</h3>
-                    <p>Mise à disposition d'un outil de ticketing et gestion de parc.</p>
-                </div>
+    <div class="filter-wrapper">
+        <div class="filter-group">
+            <h4>Segmentation</h4>
+            <div class="segment-filters">
+                <button class="filter-btn active" data-segment="all">All</button>
+                <button class="filter-btn" data-segment="ecole">École</button>
+                <button class="filter-btn" data-segment="pro">Pro</button>
+                <button class="filter-btn" data-segment="perso">Perso</button>
+                <button class="filter-btn btn-e6" data-segment="e6">E6 (Sélection)</button>
             </div>
-        </section>
-                <section id="docs-section">
-    <h2 class="title-main">Documentations Techniques</h2>
-    <div class="docs-container-blocks">
+        </div>
+
+        <div class="filter-group">
+            <h4>Compétences BTS SIO</h4>
+            <div class="category-filters">
+                <button class="cat-btn" data-cat="patrimoine">GÉRER LE PATRIMOINE</button>
+                <button class="cat-btn" data-cat="incidents">RÉPONDRE AUX INCIDENTS</button>
+                <button class="cat-btn" data-cat="prescence">DÉVELOPPER LA PRÉSENCE EN LIGNE</button>
+                <button class="cat-btn" data-cat="projet">TRAVAILLER EN MODE PROJET</button>
+                <button class="cat-btn" data-cat="service">MISE A DISPOSITION D’UN SERVICE INFORMATIQUE</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mission-grid-flex" id="projects-grid">
         
-        <div class="doc-block">
-            <div class="doc-content">
-                <div class="doc-header">
-                    <span class="doc-icon-large">📄</span>
-                    <div class="doc-title-group">
-                        <h3>Configuration des services AD DS & DNS</h3>
-                    </div>
-                </div>
-                <div class="doc-description">
-                    <p>Cette documentation détaille l'installation du rôle AD DS, la promotion du serveur en contrôleur de domaine, la création d'unités d'organisation (OU) et la gestion des utilisateurs via PowerShell et interface graphique.</p>
-                </div>
-                <div class="doc-footer">
-                    <span class="file-type">Format : DOCX</span>
-                    <a href="Documentation-AD.docx" download="Documentation-AD-Arbaoui.docx" class="btn-dl-block">Télécharger le dossier technique</a>
-                </div>
+        <article class="m-card-new project-item" 
+                 data-segment="pro e6" 
+                 data-categories="patrimoine incidents service">
+            <div class="card-header">
+                <span class="m-badge">PRO / E6</span>
+                <h3>Infrastructure Infinitech</h3>
             </div>
-        </div>
+            <p>Mise en place d'un domaine complet avec gestion des accès et sécurité renforcée.</p>
+            
+            <div class="project-docs">
+                <a href="doc-infinitech.pdf" target="_blank" class="btn-doc-link">📄 Documentation Technique</a>
+            </div>
+        </article>
 
-        <div class="doc-block">
-            <div class="doc-content">
-                <div class="doc-header">
-                    <span class="doc-icon-large">📄</span>
-                    <div class="doc-title-group">
-                        <h3>Mise en œuvre du service DHCP</h3>
-                    </div>
-                </div>
-                <div class="doc-description">
-                    <p>Guide complet sur la configuration d'un serveur DHCP : définition des plages d'adresses pour différents VLANs (User, VIP, DMZ), réservation d'IP statiques pour les serveurs et mise en place d'un agent de relais DHCP.</p>
-                </div>
-                <div class="doc-footer">
-                    <span class="file-type">Format : DOCX</span>
-                    <a href="Documentation-DHCP.docx" download="Documentation-DHCP-Arbaoui.docx" class="btn-dl-block">Télécharger le dossier technique</a>
-                </div>
+        <article class="m-card-new project-item" 
+                 data-segment="ecole" 
+                 data-categories="projet service">
+            <div class="card-header">
+                <span class="m-badge" style="background: var(--neon-purple);">ÉCOLE</span>
+                <h3>Atelier Professionnel GSB</h3>
             </div>
-        </div>
+            <p>Déploiement de solutions de supervision réseau et gestion de tickets.</p>
+            <div class="project-docs">
+                <a href="doc-gsb.pdf" target="_blank" class="btn-doc-link">📄 Rapport d'activité</a>
+            </div>
+        </article>
 
     </div>
 </section>
@@ -300,6 +280,7 @@
     </script>
 </body>
 </html>
+
 
 
 
