@@ -688,6 +688,29 @@ header, section, main, footer {
     border-radius: 24px;
     padding: 25px;
     transition: 0.4s ease;
+}
+/* État actif pour Segmentation (Cercle bleu) */
+.filter-btn.active {
+    background: var(--neon-blue);
+    color: white;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+}
+
+/* État sélectionné pour Catégories (Dégradé) */
+.cat-btn.selected {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    border: none;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.4);
+}
+
+/* On force les cartes à être des colonnes pour aligner le texte proprement */
+.m-card-new {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -734,3 +757,4 @@ header, section, main, footer {
     color: var(--neon-purple);
     text-shadow: 0 0 10px var(--neon-purple);
 }
+
