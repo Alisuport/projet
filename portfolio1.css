@@ -757,4 +757,65 @@ header, section, main, footer {
     color: var(--neon-purple);
     text-shadow: 0 0 10px var(--neon-purple);
 }
+/* Conteneur principal des filtres */
+.filter-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filter-group h4 {
+    color: var(--dim);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.segment-filters, .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Style de base des boutons */
+.filter-btn, .cat-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* État ACTIF (Segmentation - Bleu Néon) */
+.filter-btn.active {
+    background: var(--neon-blue);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+    color: white;
+}
+
+/* État SÉLECTIONNÉ (Catégories - Dégradé Violet/Bleu) */
+.cat-btn.selected {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    border: none;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.5);
+    color: white;
+}
+
+/* Bouton E6 spécifique quand actif */
+.btn-e6.active {
+    background: var(--neon-purple);
+    box-shadow: 0 0 20px var(--neon-purple);
+}
 
