@@ -619,4 +619,118 @@ header, section, main, footer {
     box-shadow: 0 0 15px var(--neon-blue);
     transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.05);
+
+}
+/* --- CONTENEUR DES FILTRES --- */
+.filter-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.filter-group h4 {
+    color: var(--dim);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* --- STYLE DES BOUTONS --- */
+.filter-btn, .cat-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--dim);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+}
+
+/* Hover : Légère lueur */
+.filter-btn:hover, .cat-btn:hover {
+    color: #fff;
+    border-color: var(--neon-blue);
+    transform: scale(1.05);
+    background: rgba(0, 210, 255, 0.1);
+}
+
+/* État Actif / Sélectionné (Multi-filtres) */
+.filter-btn.active, .cat-btn.selected {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    border: none;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Cas spécial pour le bouton E6 */
+.btn-e6.active {
+    box-shadow: 0 0 25px rgba(157, 80, 187, 0.6);
+}
+/* --- GRILLE ET CARTES --- */
+.mission-grid-flex {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.m-card-new {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 25px;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.m-card-new:hover {
+    transform: translateY(-10px) rotate(1deg); /* Petit effet de rotation dynamique */
+    border-color: var(--neon-blue);
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.15);
+}
+
+/* Badge dans la carte */
+.m-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: rgba(0, 210, 255, 0.2);
+    color: var(--neon-blue);
+    margin-bottom: 15px;
+}
+
+/* --- LIEN DOCUMENTATION TECHNIQUE --- */
+.project-docs {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-doc-link {
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-doc-link:hover {
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple);
 }
