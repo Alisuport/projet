@@ -16,7 +16,6 @@ function filterMissions(type, value, btn) {
     const isCtx = type === "ctx";
     const group = isCtx ? activeCtx : activeComp;
 
-    // Normalisation
     value = value.toLowerCase();
 
     // Gestion du bouton "Tous"
@@ -96,6 +95,10 @@ function applyFilters() {
         }
     });
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    console.log("Filtre multi‑sélection prêt.");
+});
 
 window.addEventListener("DOMContentLoaded", () => {
     console.log("Filtre multi‑critères prêt.");
