@@ -949,3 +949,55 @@ header, section, main, footer {
     opacity: 0.6;
 }
 
+
+/* Conteneur des filtres */
+.filter-wrapper {
+    position: relative;
+    z-index: 50;
+    padding: 20px;
+}
+
+/* Style de base des boutons */
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* État Hover */
+.filter-btn:hover {
+    border-color: #00d2ff;
+    color: #fff;
+}
+
+/* État Actif (Bouton cliqué) */
+.filter-btn.active {
+    background: #00d2ff;
+    color: #000;
+    border-color: #00d2ff;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+/* Couleur différente pour les boutons de compétences quand actifs */
+.comp-btn.active {
+    background: #9d50bb;
+    border-color: #9d50bb;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.5);
+}
+
+/* Animation des cartes */
+.project-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Dégradé de texte (utilisé dans ton HTML) */
+.text-gradient {
+    background: linear-gradient(to right, #00d2ff, #9d50bb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
