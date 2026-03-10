@@ -41,4 +41,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// On initialise les filtres par défaut
+let activeCtx = 'all';
+let activeComp = 'all';
+
+function filterMissions(type, value, btn) {
+    // 1. Mise à jour de l'état des boutons (UI)
+    const btnClass = type === 'ctx' ? '.ctx-btn' : '.comp-btn';
+    document.querySelectorAll(btnClass).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // 2. Mise à jour de la variable globale correspondante
+    if (type === 'ctx') activeCtx = value;
+    if (type === 'comp') activeComp = value;
+
+    // 3. Logique de filtrage des cartes
+    const projects = document.querySelectorAll('.project-item');
+    
+    projects.forEach(project => {
+        // On récupère les tags de la carte (ex: "pro e6" ou "patrimoine incident")
+        const projectCtx = project.getAttribute('data-context') || "";
+        const projectComp = project.getAttribute('data-comp') || "";
+
+        // Vérification du contexte (PRO/ECOLE/E6...)
+        const matchCtx = (activeCtx === 'all' || projectCtx.includes(activeCtx));
+        
+        // Vérification de la compétence (PATRIMOINE/INCIDENT...)
+        const matchComp = (activeComp === 'all' || projectComp.includes(activeComp));
+
+        // Affichage si les deux conditions sont vraies
+        if (matchCtx && matchComp) {
+            project.style.display = "block";
+            project.style.opacity = "1";
+        } else {
+            project.style.display = "none";
+            project.style.opacity = "0";
+        }
+    });
+}
 </script>
