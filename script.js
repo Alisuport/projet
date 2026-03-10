@@ -1,34 +1,60 @@
 /**
- * Filtrage croisé : Segment (pro, e6, école, perso...)
- * + Catégories (patrimoine, incidents, service...)
+ * Filtrage avancé :
+ * - Plusieurs filtres Contexte (ctx)
+ * - Plusieurs filtres Compétences (comp)
  * 
- * Le script gère EXACTEMENT 2 filtres en même temps.
+ * Logique :
+ *   - Dans un même groupe : OR (au moins un match)
+ *   - Entre les groupes : AND (tous les groupes doivent matcher)
  */
 
-let activeCtx = "all";   // Filtre segment
-let activeComp = "all";  // Filtre catégorie
+let activeCtx = new Set();   // ex: { "pro", "e6" }
+let activeComp = new Set();  // ex: { "patrimoine", "incidents" }
 
 function filterMissions(type, value, btn) {
 
-    // 1. Mise à jour visuelle des boutons
-    const btnClass = (type === "ctx") ? ".ctx-btn" : ".comp-btn";
+    const isCtx = type === "ctx";
+    const group = isCtx ? activeCtx : activeComp;
 
-    document.querySelectorAll(btnClass).forEach(b => b.classList.remove("active"));
-    if (btn) btn.classList.add("active");
+    // Normalisation
+    value = value.toLowerCase();
 
-    // 2. Mise à jour des filtres actifs
-    if (type === "ctx") {
-        activeCtx = value.toLowerCase();
-    } else {
-        activeComp = value.toLowerCase();
+    // Gestion du bouton "Tous"
+    if (value === "all") {
+        group.clear();
+        document.querySelectorAll(isCtx ? ".ctx-btn" : ".comp-btn")
+            .forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+    } 
+    else {
+        // Désactiver "Tous"
+        document.querySelectorAll(isCtx ? ".ctx-btn" : ".comp-btn")[0]
+            .classList.remove("active");
+
+        // Toggle du filtre
+        if (group.has(value)) {
+            group.delete(value);
+            btn.classList.remove("active");
+        } else {
+            group.add(value);
+            btn.classList.add("active");
+        }
     }
 
-    // 3. Filtrage des projets
+    // Si aucun filtre actif → réactiver "Tous"
+    if (group.size === 0) {
+        document.querySelectorAll(isCtx ? ".ctx-btn" : ".comp-btn")[0]
+            .classList.add("active");
+    }
+
+    applyFilters();
+}
+
+function applyFilters() {
     const projects = document.querySelectorAll(".project-item");
 
     projects.forEach(project => {
 
-        // Récupération des tags (séparés par espace)
         const segmentTags = (project.dataset.segment || "")
             .toLowerCase()
             .split(" ")
@@ -39,12 +65,21 @@ function filterMissions(type, value, btn) {
             .split(" ")
             .map(s => s.trim());
 
-        // Vérification des correspondances
-        const matchCtx = (activeCtx === "all" || segmentTags.includes(activeCtx));
-        const matchComp = (activeComp === "all" || categoryTags.includes(activeComp));
+        // Vérification Contexte (OR)
+        const matchCtx =
+            activeCtx.size === 0 ||
+            [...activeCtx].some(tag => segmentTags.includes(tag));
 
-        // Animation d'affichage
-        if (matchCtx && matchComp) {
+        // Vérification Catégories (OR)
+        const matchComp =
+            activeComp.size === 0 ||
+            [...activeComp].some(tag => categoryTags.includes(tag));
+
+        // Logique globale : AND
+        const visible = matchCtx && matchComp;
+
+        // Animation
+        if (visible) {
             project.style.display = "";
             requestAnimationFrame(() => {
                 project.style.opacity = "1";
@@ -62,16 +97,6 @@ function filterMissions(type, value, btn) {
     });
 }
 
-/**
- * Initialisation
- */
 window.addEventListener("DOMContentLoaded", () => {
-    console.log("Système de filtrage prêt.");
-
-    const count = document.querySelectorAll(".project-item").length;
-    if (count === 0) {
-        console.error("ERREUR : Aucune carte '.project-item' trouvée.");
-    } else {
-        console.log(count + " projets détectés.");
-    }
+    console.log("Filtre multi‑critères prêt.");
 });
