@@ -1,216 +1,87 @@
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const segmentBtns = document.querySelectorAll('.filter-btn');
-    const categoryBtns = document.querySelectorAll('.cat-btn');
-    const projects = document.querySelectorAll('.project-item');
+/**
+ * Script de filtrage pour les réalisations professionnelles
+ * Gère le filtrage croisé entre Contexte (Pro, École...) et Compétences.
+ */
 
-    let activeSegment = 'all';
-    let selectedCategories = [];
+// Variables d'état pour mémoriser les sélections
+let activeCtx = 'all';
+let activeComp = 'all';
 
-    const filter = () => {
-        projects.forEach(card => {
-            const cardSegments = card.dataset.segment.split(' ');
-            const cardCats = card.dataset.categories.split(' ');
-
-            const matchSegment = (activeSegment === 'all' || cardSegments.includes(activeSegment));
-            const matchCategory = (selectedCategories.length === 0 || selectedCategories.some(c => cardCats.includes(c)));
-
-            card.style.display = (matchSegment && matchCategory) ? 'flex' : 'none';
-        });
-    };
-
-    segmentBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            segmentBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeSegment = btn.dataset.segment;
-            filter();
-        });
-    });
-
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('selected');
-            const cat = btn.dataset.cat;
-            if(btn.classList.contains('selected')) {
-                selectedCategories.push(cat);
-            } else {
-                selectedCategories = selectedCategories.filter(c => c !== cat);
-            }
-            filter();
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const segmentBtns = document.querySelectorAll('.filter-btn');
-    const categoryBtns = document.querySelectorAll('.cat-btn');
-    const projects = document.querySelectorAll('.project-item');
-
-    let activeSegment = 'all';
-    let selectedCats = [];
-
-    function applyFilters() {
-        projects.forEach(project => {
-            const pSegments = project.dataset.segment.split(' ');
-            const pCats = project.dataset.categories.split(' ');
-
-            const matchSegment = (activeSegment === 'all' || pSegments.includes(activeSegment));
-            const matchCat = (selectedCats.length === 0 || selectedCats.some(c => pCats.includes(c)));
-
-            project.style.display = (matchSegment && matchCat) ? 'flex' : 'none';
-        });
-    }
-
-    // Clic sur Segmentation
-    segmentBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            segmentBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeSegment = btn.dataset.segment;
-            applyFilters();
-        });
-    });
-
-    // Clic sur Catégories (Multi-sélection)
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('selected');
-            const cat = btn.dataset.cat;
-            
-            if (btn.classList.contains('selected')) {
-                selectedCats.push(cat);
-            } else {
-                selectedCats = selectedCats.filter(c => c !== cat);
-            }
-            applyFilters();
-        });
-    });
-});
-</script>
-document.addEventListener('DOMContentLoaded', () => {
-    // On récupère les boutons grâce à tes classes
-    const segmentBtns = document.querySelectorAll('.filter-btn');
-    const categoryBtns = document.querySelectorAll('.cat-btn');
+/**
+ * Fonction principale appelée par les boutons HTML (onclick)
+ */
+function filterMissions(type, value, btn) {
+    // 1. Mise à jour de l'interface utilisateur (boutons)
+    // On sélectionne le groupe de boutons concerné (Contexte ou Compétences)
+    const btnClass = (type === 'ctx') ? '.ctx-btn' : '.comp-btn';
     
-    // On récupère toutes les cartes de projets
+    // On retire la classe 'active' de tous les boutons du groupe
+    document.querySelectorAll(btnClass).forEach(b => {
+        b.classList.remove('active');
+    });
+
+    // On ajoute la classe 'active' au bouton sur lequel on a cliqué
+    if (btn) {
+        btn.classList.add('active');
+    }
+
+    // 2. Mise à jour des filtres actifs
+    if (type === 'ctx') {
+        activeCtx = value.toLowerCase();
+    } else {
+        activeComp = value.toLowerCase();
+    }
+
+    // 3. Filtrage des projets
+    // On récupère toutes les cartes de projets qui doivent avoir la classe 'project-item'
     const projects = document.querySelectorAll('.project-item');
 
-    let activeSegment = 'all';
-    let selectedCats = [];
+    projects.forEach(project => {
+        // Récupération des données de la carte (data-context et data-comp)
+        const projectCtx = (project.getAttribute('data-context') || "").toLowerCase();
+        const projectComp = (project.getAttribute('data-comp') || "").toLowerCase();
 
-    // Fonction qui met à jour l'affichage
-    function applyFilters() {
-        projects.forEach(project => {
-            // Sécurité : au cas où un attribut serait vide
-            const segmentData = project.dataset.segment || "";
-            const catData = project.dataset.categories || "";
+        // Vérification de la correspondance (Logique : ET)
+        const matchCtx = (activeCtx === 'all' || projectCtx.includes(activeCtx));
+        const matchComp = (activeComp === 'all' || projectComp.includes(activeComp));
 
-            const pSegments = segmentData.split(' ');
-            const pCats = catData.split(' ');
+        // Affichage ou masquage avec une petite transition fluide
+        if (matchCtx && matchComp) {
+            project.style.display = "block";
+            // On utilise un petit timeout pour permettre à l'animation CSS de se déclencher
+            setTimeout(() => {
+                project.style.opacity = "1";
+                project.style.transform = "scale(1)";
+            }, 10);
+        } else {
+            project.style.opacity = "0";
+            project.style.transform = "scale(0.95)";
+            // On attend la fin de la transition (300ms) avant de mettre en display: none
+            setTimeout(() => {
+                if (project.style.opacity === "0") {
+                    project.style.display = "none";
+                }
+            }, 300);
+        }
+    });
+}
 
-            // Vérifications
-            const matchSegment = (activeSegment === 'all' || pSegments.includes(activeSegment));
-            const matchCat = (selectedCats.length === 0 || selectedCats.some(c => pCats.includes(c)));
-
-            // Affichage ou masquage de la carte
-            if (matchSegment && matchCat) {
-                project.style.display = 'flex'; // ou 'block' selon comment tes cartes sont codées
-            } else {
-                project.style.display = 'none';
-            }
-        });
+/**
+ * Initialisation au chargement de la page
+ */
+window.addEventListener('DOMContentLoaded', () => {
+    console.log("Système de filtrage prêt.");
+    
+    // Vérification du nombre de projets trouvés
+    const count = document.querySelectorAll('.project-item').length;
+    if (count === 0) {
+        console.error("ERREUR : Aucune carte avec la classe 'project-item' n'a été trouvée dans le HTML.");
+    } else {
+        console.log(count + " projets détectés.");
     }
 
-    // Gestion du clic sur les boutons de SEGMENTATION
-    segmentBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // On retire la classe 'active' de tous les boutons
-            segmentBtns.forEach(b => b.classList.remove('active'));
-            // On l'ajoute à celui cliqué
-            btn.classList.add('active');
-            // On met à jour le filtre
-            activeSegment = btn.dataset.segment;
-            applyFilters();
-        });
-    });
-
-    // Gestion du clic sur les boutons de CATÉGORIES
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // On ajoute ou on enlève la classe 'selected'
-            btn.classList.toggle('selected');
-            const cat = btn.dataset.cat;
-            
-            // On ajoute ou on retire la catégorie de notre tableau de recherche
-            if (btn.classList.contains('selected')) {
-                selectedCats.push(cat);
-            } else {
-                selectedCats = selectedCats.filter(c => c !== cat);
-            }
-            applyFilters();
-        });
+    // On s'assure que les boutons sont bien cliquables au niveau du curseur
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.style.cursor = 'pointer';
     });
 });
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('filter-btn') || e.target.classList.contains('cat-btn')) {
-        alert('Le bouton a été cliqué !');
-        e.target.style.backgroundColor = "red"; // Change la couleur en rouge pour tester
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const segmentBtns = document.querySelectorAll('.filter-btn');
-    const categoryBtns = document.querySelectorAll('.cat-btn');
-    const projects = document.querySelectorAll('.project-item');
-
-    let activeSegment = 'all';
-    let selectedCats = [];
-
-    function applyFilters() {
-        projects.forEach(project => {
-            const pSegments = (project.dataset.segment || "").split(' ');
-            const pCats = (project.dataset.categories || "").split(' ');
-
-            const matchSegment = (activeSegment === 'all' || pSegments.includes(activeSegment));
-            const matchCat = (selectedCats.length === 0 || selectedCats.some(c => pCats.includes(c)));
-
-            // Animation de transition simple
-            if (matchSegment && matchCat) {
-                project.style.display = 'flex';
-                setTimeout(() => { project.style.opacity = '1'; }, 10);
-            } else {
-                project.style.opacity = '0';
-                project.style.display = 'none';
-            }
-        });
-    }
-
-    // Gestion Segmentation (Choix unique)
-    segmentBtns.forEach(btn => {
-        btn.style.cursor = 'pointer'; // Force le curseur
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            segmentBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeSegment = btn.dataset.segment;
-            applyFilters();
-        });
-    });
-
-    // Gestion Catégories (Multi-sélection)
-    categoryBtns.forEach(btn => {
-        btn.style.cursor = 'pointer'; // Force le curseur
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            btn.classList.toggle('selected');
-            const cat = btn.dataset.cat;
-            
-            if (btn.classList.contains('selected')) {
-                selectedCats.push(cat);
-            } else {
-                selectedCats = selectedCats.filter(c => c !== cat);
-            }
-            applyFilters();
-        });
-    });
-});
-</script>
