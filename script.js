@@ -79,9 +79,4 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
         console.log(count + " projets détectés.");
     }
-
-    // Curseur pointer sur les boutons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.style.cursor = 'pointer';
-    });
 });
