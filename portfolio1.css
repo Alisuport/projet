@@ -1001,3 +1001,38 @@ header, section, main, footer {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+/* ----------------------------- */
+/*  BOUTONS DE FILTRE            */
+/* ----------------------------- */
+
+.filter-btn {
+    position: relative;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    opacity: 1;
+    color: white;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    transform: translateY(-2px);
+}
+
+/* ----------------------------- */
+/*  ANIMATION DES PROJETS        */
+/* ----------------------------- */
+
+.project-item {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    will-change: opacity, transform;
+}
